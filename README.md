@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=63a1ff&height=300&section=header&text=PocketBand&fontSize=70&animation=fadeIn&fontAlignY=38&desc=Frontend&descAlignY=60&fontColor=ffffff)
+![header](https://capsule-render.vercel.app/api?type=waving&color=238636&height=300&section=header&text=ReadySetGo&fontSize=70&animation=fadeIn&fontAlignY=38&desc=Frontend&descAlignY=60&fontColor=ffffff)
 
 
 ## Git Flow 브랜치 전략 사용 예정
