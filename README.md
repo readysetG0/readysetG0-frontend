@@ -1,6 +1,17 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&color=238636&height=300&section=header&text=ReadySetGo&fontSize=70&animation=fadeIn&fontAlignY=38&desc=Frontend&descAlignY=60&fontColor=ffffff)
 
 
+## Updates
+- 라우팅 경로
+> app 하위로
+> map/
+> info /record /[id]
+> eot /summary
+
+- 컴포넌트 경로
+> components 하위로
+
+
 ## Git Flow 브랜치 전략 사용 예정
 
 - 초기 셋업 브랜치는 develop에 반영(셋업 환경은 develop에서 pull로 받을 것)
