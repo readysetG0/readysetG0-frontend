@@ -1,11 +1,15 @@
 import Image from 'next/image'
 import type { Metadata } from 'next'
 
-export const metadata:Metadata={
-  title:"기록생성"
+export const metadata: Metadata = {
+  title: '기록생성',
 }
 
-export default function RecordPage({params:{id}}:{params:{id:string}}) {
+export default function RecordPage({
+  params: { id },
+}: {
+  params: { id: string }
+}) {
   console.log(id)
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
