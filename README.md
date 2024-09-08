@@ -69,5 +69,7 @@ Git-flow 브랜치 전략 발췌
 > npm run lint 
 문법 등 검사해줌
 
+### 관련 참고 링크
+[셋업 관련 velog](https://velog.io/@xmun74/Next.js-TS%EC%97%90%EC%84%9C-ESLint-Prettier-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0)
 
 
