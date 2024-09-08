@@ -4,8 +4,11 @@
 ## Updates
 - 라우팅 경로
 > app 하위로
+> 
 > map/
+>
 > info /record /[id]
+>
 > eot /summary
 
 - 컴포넌트 경로
