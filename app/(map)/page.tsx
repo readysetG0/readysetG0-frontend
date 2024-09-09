@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
-
 export const metadata: Metadata = {
   title: '트래블체커',
 }
@@ -12,11 +11,11 @@ interface Maps {
   title: string
 }
 //leaflet 자체는 ssr을 지원안하기에 동적 import로 막아준다
-const DynamicMap =dynamic (()=>import('../../components/Maps/Map'),{
-  ssr:false,
-});
+const DynamicMap = dynamic(() => import('../../components/Maps/Map'), {
+  ssr: false,
+})
 
-const URL = 'https://nomad-movies.nomadcoders.workers.dev/movies';
+const URL = 'https://nomad-movies.nomadcoders.workers.dev/movies'
 
 async function getMaps(): Promise<Maps[]> {
   // await new Promise((resolve) => setTimeout(resolve, 5000))
@@ -50,7 +49,7 @@ export default async function MapPage() {
             </li>
           ))}
         </ul> */}
-        <DynamicMap/>
+        <DynamicMap />
       </div>
     </main>
   )
