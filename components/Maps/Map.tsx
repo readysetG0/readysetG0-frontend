@@ -14,14 +14,18 @@ export default function Map(){
         shadowSize: [41, 41],
     });
 
-    const position:LatLngExpression=[37.5, 127]; //현 좌표값
+    const position1:LatLngExpression=[37.5, 127]; //현 좌표값
+    const position2:LatLngExpression=[33.3, 126.5]; //현 좌표값
     return(
         <>
-            <MapContainer center={position} zoom={13} style={{ height: '100vh', width: '100%' }}>
+            <MapContainer center={position1} zoom={13} style={{ height: '100vh', width: '100%' }}>
                 <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                <Marker position={position} icon={markerIcon}>
+                <Marker position={position1} icon={markerIcon}>
                     <Popup>🌎테스트로 지도를 띄워보자🌍</Popup>
+                </Marker>
+                <Marker position={position2} icon={markerIcon}>
+                    <Popup>🌎정상이네 집🌍</Popup>
                 </Marker>
             </MapContainer>
         </>
