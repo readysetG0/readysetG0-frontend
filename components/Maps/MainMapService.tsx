@@ -1,29 +1,32 @@
 "use client"
 
 import { LatLngExpression} from "leaflet"
-import { useEffect, useState } from "react"
-import { Marker, Popup, useMapEvents } from "react-leaflet"
+import { forwardRef, useEffect, useImperativeHandle, useState } from "react"
+import { Marker, Popup, useMap } from "react-leaflet"
 import { markerIcon } from "./Icon"
 
-export default function MainMapService(){
-    const [nowLocation,setNowLocation]=useState<LatLngExpression>({lat:37.5,lng:127})
-    const map=useMapEvents({
-        click(){
-            map.locate()
-        },
-        locationfound(e){
-            console.log(e.latlng)
-            setNowLocation(e.latlng)
-            // map.flyTo(e.latlng,map.getZoom())
-        }
-    })
+const MainMapService=forwardRef(({position}:{position:LatLngExpression},ref)=>{
+    const map=useMap();
+
+    useImperativeHandle(ref,()=>({
+        changeMarker
+    }))
+
+    const changeMarker=()=>{
+        console.log("호출됌???")
+        console.log(position)
+        map.flyTo(position,map.getZoom())
+    }
+
 
 
     return(
         <>
-            <Marker position={nowLocation} icon={markerIcon}>
+            <Marker position={position} icon={markerIcon}>
                 <Popup>나 여깄지롱~~~!!</Popup>
             </Marker>
         </>
     )
-}
+})
+
+export default MainMapService
