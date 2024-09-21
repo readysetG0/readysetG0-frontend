@@ -28,7 +28,7 @@ body {
 
 @layer components{
   .blured-layer{
-    @apply bg-white/[0.13] backdrop-blur-[32px]
+    @apply bg-white/[0.71] drop-shadow-lg
   }
 }
 

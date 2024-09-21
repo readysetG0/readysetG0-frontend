@@ -3,9 +3,9 @@
 import { LatLngExpression} from "leaflet"
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react"
 import { Marker, Popup, useMap } from "react-leaflet"
-import { markerIcon } from "./Icon"
+import  {currentLocationmarkerIcon} from "./Icon"
 
-const MainMapService=forwardRef(({position}:{position:LatLngExpression},ref)=>{
+const NowLocation=forwardRef(({position}:{position:LatLngExpression},ref)=>{
     const map=useMap();
 
     useImperativeHandle(ref,()=>({
@@ -22,11 +22,11 @@ const MainMapService=forwardRef(({position}:{position:LatLngExpression},ref)=>{
 
     return(
         <>
-            <Marker position={position} icon={markerIcon}>
+            <Marker position={position} icon={currentLocationmarkerIcon()}>
                 <Popup>나 여깄지롱~~~!!</Popup>
             </Marker>
         </>
     )
 })
 
-export default MainMapService
+export default NowLocation
