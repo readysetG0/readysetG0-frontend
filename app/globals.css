@@ -26,6 +26,12 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+@layer components{
+  .blured-layer{
+    @apply bg-white/[0.71] drop-shadow-lg
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
