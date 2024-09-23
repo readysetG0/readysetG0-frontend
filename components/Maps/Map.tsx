@@ -1,13 +1,11 @@
 "use client"
 import { LatLngExpression, marker } from "leaflet";
-import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css"
 import NowLocation from "./NowLocation";
 import {defaultmarkerIcon}  from "./Icon";
 import { FaLocationArrow } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
-import calculateAngle from "./calculateAngle"
-import UpdateMapCenter from "./UpdateMapCenter";
 import dummyPathdata from "./dummyPathdata";
 import TrackingLine from "./TrackingLine";
 import { MapLocation } from "./types";
@@ -25,7 +23,6 @@ export default function Map(){
 
     const[markeridx,setMarkeridx]=useState<number>(0)//더미데이터셋의 이동 흐름 인덱스
     const markeridxRef=useRef<number>(markeridx)//마커 인덱스의 setinterval 클로저 문제 해결위한 최신값 저장
-    const[radian,setradian]=useState<number>(180/Math.PI)//두 점 사이의 각도
 
     const changeMakerToCurrentPosition=()=>{//현 위치로 이동 버튼시 호출
         if(showNowLocation.current){
@@ -75,9 +72,6 @@ export default function Map(){
                 console.log("현재: ",markeridxRef.current)
                 console.log("다음: ",markeridxRef.current+1)
                 if((markeridxRef.current+1)<currentPosition.length){
-                    let angle=calculateAngle(currentPosition[markeridxRef.current] as [number,number],currentPosition[markeridxRef.current+1] as [number,number])
-                    console.log(angle);
-                    setradian(angle)
                     setMarkeridx((prev)=>(prev+1))
                 }
                 else{
@@ -99,7 +93,7 @@ export default function Map(){
             <MapContainer center={currentPosition[markeridx]} zoom={20} style={{ height: '100vh', width: '100%' }}>
                 <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                <UpdateMapCenter currentPosition={currentPosition[markeridx]}/>
+                {/* <UpdateMapCenter currentPosition={currentPosition[markeridx]}/> */}
                 <Marker position={position2} icon={defaultmarkerIcon}>
                     <Popup>🌎정상이네 집🌍</Popup>
                 </Marker>
@@ -109,7 +103,7 @@ export default function Map(){
                         <Popup className="font-semibold">🚩테스트마커 {idx}🚩</Popup>
                     </Marker>
                 ))}
-                <NowLocation position={currentPosition[markeridx]} angle={radian} ref={showNowLocation}/>
+                <NowLocation position={currentPosition[markeridx] as [number,number]}  ref={showNowLocation} />
                 <TrackingLine positionList={currentPosition}/>
             </MapContainer>
             <button onClick={changeMakerToCurrentPosition} className="bg-blue absolute bottom-10 right-4 z-[1000] blured-layer text-rsgYellow-primary px-4 py-4 rounded-full shadow-lg active:bg-rsgGreen-primary focus:outline-none flex items-center">
