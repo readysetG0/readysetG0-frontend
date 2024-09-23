@@ -1,9 +1,14 @@
-import Image from 'next/image'
 import type { Metadata } from 'next'
+import InputBox from '@/components/Common/InputBox'
+import Button from '@/components/Common/Button'
 
 export const metadata: Metadata = {
   title: '기록생성',
 }
+
+export function callAlert() {
+  alert(true);
+};
 
 export default function RecordPage({
   params: { id },
@@ -14,8 +19,13 @@ export default function RecordPage({
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div>
-        <h1>여기는 정보입력 페이지-- 여기다가 컴포넌트 만들고 붙이기 시작</h1>
-        <h1>id값은 {id}</h1>
+        <div className="flex flex-col items-center pt-3">
+          <InputBox title='인풋박스 title'></InputBox>
+          <Button
+            title='안녕'
+            // handleClick={() => callAlert()}
+          />
+        </div>
       </div>
     </main>
   )
