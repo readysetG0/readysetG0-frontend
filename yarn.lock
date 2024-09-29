@@ -2283,10 +2283,8 @@ react-is@^16.13.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-leaflet-tracking-marker@^1.0.16:
-  version "1.0.16"
-  resolved "https://registry.yarnpkg.com/react-leaflet-tracking-marker/-/react-leaflet-tracking-marker-1.0.16.tgz#61f84faf2c5aaf13622a333ab450dd7cf64f98da"
-  integrity sha512-P1HzdPUUgCqXCR6AYofLOsA0hbNI4CP+44IdujewYiWlz4Vsk4ucqcVrbB5TEysstU+5FwJxwwyCB4DdZ0y8Nw==
+"react-leaflet-tracking-marker@file:.yalc/react-leaflet-tracking-marker":
+  version "1.0.0"
   dependencies:
     fs-extra "^10.1.0"
     rimraf "^3.0.2"

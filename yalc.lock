@@ -1,0 +1,11 @@
+{
+  "version": "v1",
+  "packages": {
+    "react-leaflet-tracking-marker": {
+      "version": "1.0.5",
+      "signature": "3023e335862e42ed985e2e213e9c01b6",
+      "file": true,
+      "replaced": "^1.0.16"
+    }
+  }
+}

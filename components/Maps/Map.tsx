@@ -90,7 +90,7 @@ export default function Map(){
         <>
         {currentPosition.length>0?
             (<>
-            <MapContainer center={currentPosition[markeridx]} zoom={20} style={{ height: '100vh', width: '100%' }}>
+            <MapContainer center={currentPosition[0]} zoom={20} style={{ height: '100vh', width: '100%' }}>
                 <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                 {/* <UpdateMapCenter currentPosition={currentPosition[markeridx]}/> */}
