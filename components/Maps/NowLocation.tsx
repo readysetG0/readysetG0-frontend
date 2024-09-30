@@ -30,16 +30,16 @@ const NowLocation=forwardRef(({position}:{position:[number,number]},ref)=>{
         setKeepCenter(true)//다시 트래킹 되도록 포커스 on
     }
 
+    const changeFocus =()=>{
+        console.log("touchstart 이벤트 호출")
+        setKeepCenter(false)//포커스를 가운데에서 해제시킴
+    }
+
     useEffect(()=>{
         const mapContainer=map.getContainer();
-        mapContainer.addEventListener("touchstart",()=>{
-            console.log("무브엔드 이벤트 호출")
-            setKeepCenter(false)//포커스를 가운데에서 해제시킴
-        })
+        mapContainer.addEventListener("touchstart",changeFocus)
 
-        return()=>{mapContainer.removeEventListener("touchstart",()=>{
-            console.log("무브엔드 이벤트 언마운트")}
-            )}
+        return()=>{mapContainer.removeEventListener("touchstart",changeFocus)}
     },[])
 
     useEffect(()=>{

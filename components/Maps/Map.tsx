@@ -3,12 +3,13 @@ import { LatLngExpression, marker } from "leaflet";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css"
 import NowLocation from "./NowLocation";
-import {defaultmarkerIcon}  from "./Icon";
+import {makeMarkerIcon, defaultmarkerIcon}  from "./Icon";
 import { FaLocationArrow } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
 import dummyPathdata from "./dummyPathdata";
 import TrackingLine from "./TrackingLine";
-import { MapLocation } from "./types";
+import { MapLocation } from "./utils/types";
+import { MarkerSeries } from "./utils/constants";
 
 
 
@@ -67,7 +68,7 @@ export default function Map(){
     },[markeridx])
 
     useEffect(()=>{
-        if(currentPosition.length>0){
+        if(currentPosition.length==0){//잠시 interval작동 안되도록 막음
             const intervalTimer=setInterval(():void=>{
                 console.log("현재: ",markeridxRef.current)
                 console.log("다음: ",markeridxRef.current+1)
@@ -81,9 +82,6 @@ export default function Map(){
     
             return()=>clearInterval(intervalTimer)
         }
-        // let angle=calculateAngle(currentPosition[markeridx] as [number,number],currentPosition[markeridx+1] as [number,number])
-        // console.log(angle)
-        // setradian(angle)
     },[])
 
     return(
@@ -99,7 +97,7 @@ export default function Map(){
                 </Marker>
                 {dummyPathdata.map((marker,idx)=>(
                     idx%5==0 &&
-                        <Marker key={idx} position={marker} icon={defaultmarkerIcon}>
+                        <Marker key={idx} position={marker} icon={makeMarkerIcon({markerType:MarkerSeries.Airport})}>
                         <Popup className="font-semibold">🚩테스트마커 {idx}🚩</Popup>
                     </Marker>
                 ))}
