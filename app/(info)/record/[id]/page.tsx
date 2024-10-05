@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import InputBox from '@/components/Common/InputBox'
 import Button from '@/components/Common/Button'
-import RecordHeader from '@/components/Common/RecordHeader'
-import RecordFooter from '@/components/Common/RecordFooter'
+import Header from '@/components/Common/Header'
+import Footer from '@/components/Common/Footer'
+import Carousel from '@/components/Common/Carousel'
+import Divider from '@/components/Common/Divider'
 
 export const metadata: Metadata = {
   title: '마커 상세보기',
@@ -19,27 +21,24 @@ export default function RecordPage({
 }) {
   // console.log(id)
   return (
-    <main className="container bg-white flex min-h-screen flex-col items-center p-3 overflow-hidden">
+    <main className="container bg-white flex min-h-screen flex-col items-center p-6 overflow-hidden">
       <header id="header" className="container fixed top-0 bg-inherit p-3">
-        <RecordHeader />
+        <Header />
       </header>
-      <div id="content" className="container mx-auto mt-[3.5rem] mb-[3.5rem]">
-        내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>
-        내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>
-        내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>내용<br/>
+      <div id="content" className="container mx-auto mt-[4rem] mb-[4rem] flex flex-col justify-center items-center gap-3">
+        <Carousel></Carousel>
+        <InputBox title="" icon="MdAccessTime" />
+        <div className="px-[-1.5rem] w-full">
+          <Divider />
+        </div>
+        <InputBox title="" icon="FaMap" />
+        <InputBox title="" icon="IoMdPricetag" />
+        <InputBox title="" icon="MdOutlineEdit" />
+        <InputBox title="" icon="GrMoney" />
       </div>
       <footer id="footer" className="container fixed bottom-0 bg-inherit px-6 py-3">
-        <RecordFooter/>
+        <Footer/>
       </footer>
-      {/* <div>
-        <div className="flex flex-col items-center pt-3">
-          <InputBox title='인풋박스 title'></InputBox>
-          <Button
-            title='안녕'
-            // handleClick={() => callAlert()}
-          />
-        </div>
-      </div> */}
     </main>
   )
 }
