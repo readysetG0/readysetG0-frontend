@@ -1,10 +1,12 @@
+'use client'
+
+import { ReactNode } from "react";
 import Button from "./Button";
 
-export default function Footer() {
+export default function Footer({ children }: { children?: ReactNode }) {
     return (
         <div id="root" className="flex justify-center gap-4">
-            <Button title="취소"/>
-            <Button title="완료"/>
+            {children}
         </div>
     )
 }

@@ -2,13 +2,22 @@
 
 import { ButtonProps } from "../CommonProps/ButtonProps";
 
-export default function Button({ title, containerStyles, handleClick, btnType, textStyles, rightIcon } : ButtonProps) {
+Button.defaultProps = {
+  btnType: "ok",
+}
+
+export default function Button({ title, btnType, containerStyles, onClick, textStyles, rightIcon } : ButtonProps) {
+
+  const checkBtnType = () => {
+    if (btnType === "cancel") return "bg-white border-2 border-rsgYellow-primary text-black active:border-rsgYellow-accent";
+    else return "bg-rsgGreen-primary active:bg-rsgGreen-accent text-white";
+  }
+
   return (
     <button
         id="button"
-        type="button"
-        className="w-full h-10 flex justify-center items-center rounded-3xl bg-rsgGreen-primary px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-rsgGreen-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
-        onClick={() => alert("버튼 왜눌러!!!")}
+        className={`w-full h-10 flex justify-center items-center rounded-3xl px-3 py-1.5 text-base font-semibold leading-6 shadow-sm ${checkBtnType()}`}
+        onClick={(e) => onClick?.(e)}
       >
         <span className={`flex-1 ${textStyles}`}>{title}</span>
       </button>
