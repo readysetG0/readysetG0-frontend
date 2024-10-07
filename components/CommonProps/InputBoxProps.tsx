@@ -1,10 +1,8 @@
-
 export interface InputBoxProps {
     title: string;
     icon?: string;
-    containerStyles?: string;
-    btnType?: "button" | "submit";
-    textStyles?: string;
-    rightIcon?: string;
-    isDisabled?: boolean;
+    handleChange?: (value: string) => void;
+    disabled?: boolean;
+    readonly?: boolean;
+    value?: string;
 }
