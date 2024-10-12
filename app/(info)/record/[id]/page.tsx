@@ -7,6 +7,7 @@ import Footer from '@/components/Common/Footer'
 import Carousel from '@/components/Common/Carousel'
 import Divider from '@/components/Common/Divider'
 import { useState } from 'react'
+import ImagePicker from '@/components/Common/ImagePicker'
 
 export default function RecordPage({
   params: { id },
@@ -52,7 +53,11 @@ export default function RecordPage({
         id="content"
         className="container mx-auto mt-[4rem] mb-[4rem] flex flex-col justify-center items-center gap-3"
       >
-        <Carousel></Carousel>
+        <Carousel>
+          <ImagePicker title={1} />
+          <ImagePicker title={2} />
+          <ImagePicker title={3} />
+        </Carousel>
         <InputBox title="" icon="MdAccessTime" disabled value={data.time} handleChange={(value) => handleData(value, "time")} />
         <div className="w-full">
           <Divider />
