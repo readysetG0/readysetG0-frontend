@@ -14,8 +14,8 @@ export default function RecordPage({
   params: { id: string }
 }) {
   const [ data, setData ] = useState({
-    time: "",
-    place: "",
+    time: "2024-10-09 오후 10:09",
+    place: "수완나품 국제공항",
     tag: [],
     record: {
       title: "",
@@ -29,6 +29,7 @@ export default function RecordPage({
     test2: "",
     test3: "",
   })
+
   // console.log(id)
   function handleData(value: string, name: string) {
     setData({
@@ -38,7 +39,7 @@ export default function RecordPage({
   }
 
   function sendData() {
-    console.log("입력된 데이터? ", data);
+    console.log("입력된 데이터? ", data)
   }
 
   return (
@@ -52,14 +53,14 @@ export default function RecordPage({
         className="container mx-auto mt-[4rem] mb-[4rem] flex flex-col justify-center items-center gap-3"
       >
         <Carousel></Carousel>
-        <InputBox title="" icon="MdAccessTime" handleChange={(value) => handleData(value, "time")} disabled value="123" />
+        <InputBox title="" icon="MdAccessTime" disabled value={data.time} handleChange={(value) => handleData(value, "time")} />
         <div className="w-full">
           <Divider />
         </div>
-        <InputBox title="" icon="FaMap" handleChange={(value) => handleData(value, "place")} readonly value="수완나품 국제공항" />
-        <InputBox title="" icon="IoMdPricetag" handleChange={(value) => handleData(value, "test1")} />
-        <InputBox title="" icon="MdOutlineEdit" handleChange={(value) => handleData(value, "test2")} />
-        <InputBox title="" icon="GrMoney" handleChange={(value) => handleData(value, "test3")} />
+        <InputBox title="" icon="FaMap" readonly value={data.place} handleChange={(value) => handleData(value, "place")}/>
+        <InputBox title="" icon="IoMdPricetag" value={data.test1} handleChange={(value) => handleData(value, "test1")} />
+        <InputBox title="" icon="MdOutlineEdit" value={data.test2} handleChange={(value) => handleData(value, "test2")} />
+        <InputBox title="" icon="GrMoney" value={data.test3} handleChange={(value) => handleData(value, "test3")} />
       </div>
 
       <footer

@@ -19,6 +19,7 @@ const Icon: { [iconName: string]: IconType } = {
 }
 
 export default function InputBox({title, icon, handleChange, disabled=false, readonly=false, value=""}: InputBoxProps) {
+    const [inputValue, setInputValue] = useState(value)
     const [iconBgColor, setIconBgColor] = useState(() => {
         if (disabled) return "bg-[#D9D9D9]"
         else return "bg-rsgGreen-primary"
@@ -35,14 +36,6 @@ export default function InputBox({title, icon, handleChange, disabled=false, rea
             setIconBgColor("bg-rsgGreen-primary")
         }
     }
-
-    // function checkIconStyle(): string {
-    //     if (disabled) {
-    //         return "bg-[#D9D9D9]"
-    //     } else {
-    //         return "bg-rsgGreen-primary"
-    //     }
-    // }
 
     function checkInputStyle(): string {
         if (disabled) {
@@ -77,10 +70,10 @@ export default function InputBox({title, icon, handleChange, disabled=false, rea
                         type="text"
                         name="textbox"
                         id="texbox"
-                        autoComplete="given-name"
-                        defaultValue={value}
+                        value={inputValue}
                         className={`block w-full min-h-10 h-10 rounded-full border px-3.5 py-2 font-raleway shadow-sm placeholder:text-gray-400 ${checkInputStyle()}`}
                         onChange={(e) => {
+                            setInputValue(e.target.value)
                             handleChange?.(e.target.value)
                         }}
                         onFocus={(e) => onFocusInput()}
