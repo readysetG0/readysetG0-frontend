@@ -1,8 +1,10 @@
+import { ReactNode } from "react";
+
 export interface InputBoxProps {
-    title: string;
+    children?: ReactNode;
+    title?: string;
     icon?: string;
-    handleChange?: (value: string) => void;
     disabled?: boolean;
     readonly?: boolean;
-    value?: string;
+    focus?: boolean;
 }

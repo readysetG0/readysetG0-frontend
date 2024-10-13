@@ -8,6 +8,8 @@ import Carousel from '@/components/Common/Carousel'
 import Divider from '@/components/Common/Divider'
 import { useState } from 'react'
 import ImagePicker from '@/components/Common/ImagePicker'
+import TagBox from '@/components/Common/TagBox'
+import TextBox from '@/components/Common/TextBox'
 
 export default function RecordPage({
   params: { id },
@@ -54,18 +56,18 @@ export default function RecordPage({
         className="container mx-auto mt-[4rem] mb-[4rem] flex flex-col justify-center items-center gap-3"
       >
         <Carousel>
-          <ImagePicker title={1} />
-          <ImagePicker title={2} />
-          <ImagePicker title={3} />
+          <img src="https://i.pinimg.com/736x/89/c6/05/89c605589cc891c32f2682839adec2a3.jpg"/>
+          <img src="https://t4.ftcdn.net/jpg/05/62/99/31/360_F_562993122_e7pGkeY8yMfXJcRmclsoIjtOoVDDgIlh.jpg"/>
+          <ImagePicker />
         </Carousel>
-        <InputBox title="" icon="MdAccessTime" disabled value={data.time} handleChange={(value) => handleData(value, "time")} />
+        <TextBox icon="MdAccessTime" disabled value={data.time} handleChange={(value) => handleData(value, "time")} />
         <div className="w-full">
           <Divider />
         </div>
-        <InputBox title="" icon="FaMap" readonly value={data.place} handleChange={(value) => handleData(value, "place")}/>
-        <InputBox title="" icon="IoMdPricetag" value={data.test1} handleChange={(value) => handleData(value, "test1")} />
-        <InputBox title="" icon="MdOutlineEdit" value={data.test2} handleChange={(value) => handleData(value, "test2")} />
-        <InputBox title="" icon="GrMoney" value={data.test3} handleChange={(value) => handleData(value, "test3")} />
+        <TextBox icon="FaMap" readonly value={data.place} handleChange={(value) => handleData(value, "place")}/>
+        <TagBox tagList={data.tag} icon="IoMdPricetag" />
+        <TextBox icon="MdOutlineEdit" value={data.test2} handleChange={(value) => handleData(value, "test2")} />
+        <TextBox icon="GrMoney" value={data.test3} handleChange={(value) => handleData(value, "test3")} />
       </div>
 
       <footer

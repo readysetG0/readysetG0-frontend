@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 export interface CarouselProps {
-    children?: ReactNode[] | ReactNode,
+    children?: ReactNode
     index?: number,
     
 }
