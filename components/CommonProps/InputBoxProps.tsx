@@ -7,4 +7,5 @@ export interface InputBoxProps {
     disabled?: boolean;
     readonly?: boolean;
     focus?: boolean;
+    className?: string;
 }

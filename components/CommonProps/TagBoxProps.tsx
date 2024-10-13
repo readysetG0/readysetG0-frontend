@@ -1,5 +1,6 @@
 import { InputBoxProps } from "./InputBoxProps";
 
 export interface TagBoxProps extends InputBoxProps {
-    tagList: string[]
+    tagList: string[];
+    selectIndexList?: number[];
 }

@@ -19,7 +19,7 @@ export default function RecordPage({
   const [ data, setData ] = useState({
     time: "2024-10-09 오후 10:09",
     place: "수완나품 국제공항",
-    tag: [],
+    tag: ["#공항", "#카페", "#호텔"],
     record: {
       title: "",
       content: "",
@@ -65,7 +65,7 @@ export default function RecordPage({
           <Divider />
         </div>
         <TextBox icon="FaMap" readonly value={data.place} handleChange={(value) => handleData(value, "place")}/>
-        <TagBox tagList={data.tag} icon="IoMdPricetag" />
+        <TagBox tagList={data.tag} selectIndexList={[1]} icon="IoMdPricetag" />
         <TextBox icon="MdOutlineEdit" value={data.test2} handleChange={(value) => handleData(value, "test2")} />
         <TextBox icon="GrMoney" value={data.test3} handleChange={(value) => handleData(value, "test3")} />
       </div>

@@ -18,7 +18,7 @@ const Icon: { [iconName: string]: IconType } = {
     "GrMoney": GrMoney
 }
 
-export default function InputBox({children, title, icon, disabled=false, readonly=false, focus=false}: InputBoxProps) {
+export default function InputBox({children, title, icon, disabled=false, readonly=false, focus=false, className=""}: InputBoxProps) {
     const [iconBgColor, setIconBgColor] = useState(() => {
         if (disabled) return "bg-[#D9D9D9]"
         else return "bg-rsgGreen-primary"
@@ -53,7 +53,7 @@ export default function InputBox({children, title, icon, disabled=false, readonl
     }
 
     return (
-        <div id="root" className="flex justify-start items-center gap-2 w-full">
+        <div id="root" className="flex justify-start items-center gap-2 w-full h-12">
             <div
                 id="icon-wrapper"
                 className={`${icon ? 'flex' : 'hidden'} justify-center items-center rounded-full w-10 h-10 ${iconBgColor}`}
@@ -70,7 +70,7 @@ export default function InputBox({children, title, icon, disabled=false, readonl
                 >
                     {title}
                 </label>
-                <div className={`w-full min-h-10 h-10 rounded-full border px-3.5 py-2 ${checkInputStyle()} ${setOutline(focus)}`}>
+                <div className={`w-full min-h-10 h-10 rounded-full border px-3.5 py-2 ${checkInputStyle()} ${setOutline(focus)} ${className}`}>
                     {children}
                 </div>
             </div>
