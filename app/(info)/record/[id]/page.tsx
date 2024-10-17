@@ -66,6 +66,7 @@ export default function RecordPage({
         </div>
         <TextBox icon="FaMap" readonly value={data.place} handleChange={(value) => handleData(value, "place")}/>
         <TagBox tagList={data.tag} selectIndexList={[1]} icon="IoMdPricetag" />
+        <TagBox tagList={["홍길동", "김철수", "김영희"]} selectIndexList={[1]} mode="multiple" icon="IoMdPricetag" />
         <TextBox icon="MdOutlineEdit" value={data.test2} handleChange={(value) => handleData(value, "test2")} />
         <TextBox icon="GrMoney" value={data.test3} handleChange={(value) => handleData(value, "test3")} />
       </div>
