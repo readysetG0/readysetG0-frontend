@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { InputBoxProps } from "../CommonProps/InputBoxProps"
 import { IconType } from "react-icons";
 
@@ -18,11 +18,14 @@ const Icon: { [iconName: string]: IconType } = {
     "GrMoney": GrMoney
 }
 
-export default function InputBox({children, title, icon, disabled=false, readonly=false, focus=false, className=""}: InputBoxProps) {
+export default function InputBox({children, title, icon, disabled=false, readonly=false, focus=false, boxHeight="", className=""}: InputBoxProps) {
+    const childrenWrapper = useRef<HTMLDivElement>(null)
     const [iconBgColor, setIconBgColor] = useState(() => {
         if (disabled) return "bg-[#D9D9D9]"
         else return "bg-rsgGreen-primary"
     })
+
+    const [bh, setBh] = useState(boxHeight)
 
     useEffect(() => {
         if (focus) {
@@ -35,6 +38,19 @@ export default function InputBox({children, title, icon, disabled=false, readonl
             }
         }
     }, [focus])
+
+    useEffect(() => {
+        console.log(boxHeight)
+        setBh(boxHeight)
+    }, [boxHeight])
+
+    useEffect(() => {
+        if (childrenWrapper.current !== null) {
+            childrenWrapper.current.style.height = "auto"
+            childrenWrapper.current.style.height = bh
+        }
+
+    }, [bh])
 
     function checkInputStyle(): string {
         if (disabled) {
@@ -53,7 +69,7 @@ export default function InputBox({children, title, icon, disabled=false, readonl
     }
 
     return (
-        <div id="root" className="flex justify-start items-center gap-2 w-full h-12">
+        <div id="root" className={`flex justify-start items-center gap-2 w-full ${bh !== "" ? bh : "h-12"}`}>
             <div
                 id="icon-wrapper"
                 className={`${icon ? 'flex' : 'hidden'} justify-center items-center rounded-full w-10 h-10 ${iconBgColor}`}
@@ -70,7 +86,7 @@ export default function InputBox({children, title, icon, disabled=false, readonl
                 >
                     {title}
                 </label>
-                <div className={`w-full min-h-10 h-10 rounded-full border px-3.5 py-2 ${checkInputStyle()} ${setOutline(focus)} ${className}`}>
+                <div ref={childrenWrapper} className={`w-full min-h-10 ${bh != "" ? bh : "h-12"} rounded-full border px-3.5 py-2 ${checkInputStyle()} ${setOutline(focus)} ${className}`}>
                     {children}
                 </div>
             </div>

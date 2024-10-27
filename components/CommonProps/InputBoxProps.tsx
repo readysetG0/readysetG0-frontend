@@ -7,5 +7,6 @@ export interface InputBoxProps {
     disabled?: boolean;
     readonly?: boolean;
     focus?: boolean;
+    boxHeight?: string;
     className?: string;
 }

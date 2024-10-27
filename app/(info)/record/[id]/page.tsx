@@ -10,6 +10,7 @@ import { useState } from 'react'
 import ImagePicker from '@/components/Common/ImagePicker'
 import TagBox from '@/components/Common/TagBox'
 import TextBox from '@/components/Common/TextBox'
+import RecordBox from '@/components/Common/RecordBox'
 
 export default function RecordPage({
   params: { id },
@@ -67,7 +68,7 @@ export default function RecordPage({
         <TextBox icon="FaMap" readonly value={data.place} handleChange={(value) => handleData(value, "place")}/>
         <TagBox tagList={data.tag} selectIndexList={[1]} icon="IoMdPricetag" />
         <TagBox tagList={["홍길동", "김철수", "김영희"]} selectIndexList={[1]} mode="multiple" icon="IoMdPricetag" />
-        <TextBox icon="MdOutlineEdit" value={data.test2} handleChange={(value) => handleData(value, "test2")} />
+        <RecordBox icon="MdOutlineEdit" value={data.test2} handleChange={(value) => handleData(value, "test2")} />
         <TextBox icon="GrMoney" value={data.test3} handleChange={(value) => handleData(value, "test3")} />
       </div>
 

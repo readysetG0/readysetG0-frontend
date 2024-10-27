@@ -1,0 +1,66 @@
+"use client"
+
+import { useRef, useState } from "react";
+import { RecordBoxProps } from "../CommonProps/RecordBoxProps";
+import InputBox from "./InputBox";
+import TextBox from "./TextBox";
+
+export default function RecordBox({ title, icon, disabled=false, readonly=false, handleChange, value }: RecordBoxProps) {
+    const textarea = useRef<HTMLTextAreaElement>(null)
+    const [contentHeight, setContentHeight] = useState("h-20")
+    const [isFocused, setIsFocused] = useState(false)
+
+
+    const handleResizeHeight = () => {
+        if (textarea.current !== null) {
+            textarea.current.style.height = "auto"
+            const scrollHeight = textarea.current.scrollHeight
+            if (scrollHeight > parseInt("5rem")) {
+                
+                textarea.current.style.height = scrollHeight + 'px'
+                setContentHeight(`h-[${textarea.current.style.height}]`)
+            }
+            else textarea.current.style.height = "5rem"
+        }
+    }
+
+    function onTextareaFocus() {
+        setIsFocused(true)
+    }
+
+    function onTextareaBlur() {
+        setIsFocused(false)
+    }
+
+    return (
+        <div id="root" className="container">
+            <TextBox
+                title={title}
+                icon={icon}
+                disabled={disabled}
+                readonly={readonly}
+                focus={isFocused}
+                handleFocus={(value) => {
+                    setIsFocused(value)
+                }}
+            />
+
+            <InputBox
+                disabled={disabled}
+                readonly={readonly}
+                boxHeight={contentHeight}
+                className={`ml-10 mt-1 rounded-2xl`}
+                focus={isFocused}
+            >
+                <textarea
+                    ref={textarea}
+                    onChange={(e) => handleResizeHeight()}
+                    onFocus={(e) => onTextareaFocus()}
+                    onBlur={(e) => onTextareaBlur()}
+                    rows={1}
+                    className="w-full h-full resize-none bg-inherit"
+                ></textarea>
+            </InputBox>
+        </div> 
+    )
+}
