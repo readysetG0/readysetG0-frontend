@@ -86,7 +86,7 @@ export default function InputBox({children, title, icon, disabled=false, readonl
                 >
                     {title}
                 </label>
-                <div ref={childrenWrapper} className={`w-full min-h-10 ${bh != "" ? bh : "h-12"} rounded-full border px-3.5 py-2 ${checkInputStyle()} ${setOutline(focus)} ${className}`}>
+                <div ref={childrenWrapper} className={`w-full min-h-10 ${bh != "" ? bh : "h-12"} flex items-center rounded-full border px-3.5 py-2 ${checkInputStyle()} ${setOutline(focus)} ${className}`}>
                     {children}
                 </div>
             </div>
