@@ -63,7 +63,7 @@ export default function RecordPage({
         </Carousel>
         <TextBox icon="MdAccessTime" disabled value={data.time} handleChange={(value) => handleData(value, "time")} />
         <div className="w-full">
-          <Divider parentPadding="1.5rem" />
+          <Divider />
         </div>
         <TextBox icon="FaMap" readonly value={data.place} handleChange={(value) => handleData(value, "place")}/>
         <TagBox tagList={data.tag} selectIndexList={[1]} icon="IoMdPricetag" />
