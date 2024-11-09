@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { InputBoxProps } from "../CommonProps/InputBoxProps"
 import { IconType } from "react-icons";
+import { twMerge } from "tailwind-merge";
 
 import { MdAccessTime } from "react-icons/md";
 import { FaMap } from "react-icons/fa";
@@ -23,8 +24,9 @@ export default function InputBox({children, title, icon, disabled=false, readonl
         if (disabled) return "bg-[#D9D9D9]"
         else return "bg-rsgGreen-primary"
     })
-
     const [bh, setBh] = useState(boxHeight)
+
+    const childWrapperClassName = twMerge(`w-full min-h-10 ${(bh != "" || bh !== undefined) ? bh : "h-12"} flex items-center rounded-full border px-3.5 py-2`, checkInputStyle(), setOutline(focus), className)
 
     useEffect(() => {
         if (focus) {
@@ -39,7 +41,6 @@ export default function InputBox({children, title, icon, disabled=false, readonl
     }, [focus])
 
     useEffect(() => {
-        console.log(boxHeight)
         setBh(boxHeight)
     }, [boxHeight])
 
@@ -77,7 +78,8 @@ export default function InputBox({children, title, icon, disabled=false, readonl
                 >
                     {title}
                 </label>
-                <div className={`w-full min-h-10 ${(bh != "" || bh !== undefined) ? bh : "h-12"} flex items-center rounded-full border px-3.5 py-2 ${checkInputStyle()} ${setOutline(focus)} ${className}`}>
+                {/* <div className={`w-full min-h-10 ${(bh != "" || bh !== undefined) ? bh : "h-12"} flex items-center rounded-full border px-3.5 py-2 ${checkInputStyle()} ${setOutline(focus)} ${className}`}> */}
+                <div className={childWrapperClassName}>
                     {children}
                 </div>
             </div>
