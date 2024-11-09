@@ -19,7 +19,6 @@ const Icon: { [iconName: string]: IconType } = {
 }
 
 export default function InputBox({children, title, icon, disabled=false, readonly=false, focus=false, boxHeight="", className=""}: InputBoxProps) {
-    const childrenWrapper = useRef<HTMLDivElement>(null)
     const [iconBgColor, setIconBgColor] = useState(() => {
         if (disabled) return "bg-[#D9D9D9]"
         else return "bg-rsgGreen-primary"
@@ -43,14 +42,6 @@ export default function InputBox({children, title, icon, disabled=false, readonl
         console.log(boxHeight)
         setBh(boxHeight)
     }, [boxHeight])
-
-    useEffect(() => {
-        if (childrenWrapper.current !== null) {
-            childrenWrapper.current.style.height = "auto"
-            childrenWrapper.current.style.height = bh
-        }
-
-    }, [bh])
 
     function checkInputStyle(): string {
         if (disabled) {
@@ -86,7 +77,7 @@ export default function InputBox({children, title, icon, disabled=false, readonl
                 >
                     {title}
                 </label>
-                <div ref={childrenWrapper} className={`w-full min-h-10 ${bh != "" ? bh : "h-12"} flex items-center rounded-full border px-3.5 py-2 ${checkInputStyle()} ${setOutline(focus)} ${className}`}>
+                <div className={`w-full min-h-10 ${(bh != "" || bh !== undefined) ? bh : "h-12"} flex items-center rounded-full border px-3.5 py-2 ${checkInputStyle()} ${setOutline(focus)} ${className}`}>
                     {children}
                 </div>
             </div>

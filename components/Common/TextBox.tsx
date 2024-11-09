@@ -23,7 +23,7 @@ export default function TextBox({title, icon, disabled=false, readonly=false, ha
                 name="textbox"
                 id="texbox"
                 value={inputValue}
-                className={`block bg-inherit w-full font-raleway placeholder:text-gray-400 focus:outline-none`}
+                className={`block bg-inherit w-full font-raleway placeholder:text-gray-400 focus:outline-none caret-current focus:caret-current`}
                 onChange={(e) => {
                     setInputValue(e.target.value)
                     handleChange?.(e.target.value)
