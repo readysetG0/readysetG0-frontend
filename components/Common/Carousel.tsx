@@ -1,6 +1,6 @@
 'use client'
 
-import { forwardRef, MutableRefObject, ReactNode, useEffect, useRef, useState } from "react";
+import { forwardRef, ReactNode, useState } from "react";
 import { CarouselProps } from "../CommonProps/CarouselProps";
 import registDragEvent from "@/utils/registDragEvent";
 

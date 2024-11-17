@@ -43,8 +43,6 @@ export default function RecordPage({
       setImgWidth(carouselRef.current?.getBoundingClientRect().width)
       setImgHeight(carouselRef.current?.getBoundingClientRect().height)
     }
-    console.log("IMG_WIDTH? ", imgWidth)
-    console.log("IMG_HEIGHT? ", imgHeight)
   }, [])
 
   // console.log(id)
@@ -82,7 +80,6 @@ export default function RecordPage({
         <TagBox tagList={data.tag} selectIndexList={[1]} icon="IoMdPricetag" />
         <TagBox tagList={["홍길동", "김철수", "김영희"]} selectIndexList={[1]} mode="multiple" icon="IoMdPricetag" />
         <RecordBox icon="MdOutlineEdit" value={data.test2} handleChange={(value) => handleData(value, "test2")} />
-        <TextBox icon="GrMoney" value={data.test3} handleChange={(value) => handleData(value, "test3")} />
       </div>
 
       <footer
@@ -91,12 +88,7 @@ export default function RecordPage({
       >
         <Footer>
           <Button title="삭제" btnType="cancel" />
-          <Button
-            title="수정"
-            handleClick={() => {
-              sendData()
-            }}
-          />
+          <Button title="수정" handleClick={() => {sendData()}} />
         </Footer>
       </footer>
     </main>
