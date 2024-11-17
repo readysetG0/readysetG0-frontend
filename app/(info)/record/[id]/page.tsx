@@ -60,19 +60,19 @@ export default function RecordPage({
   }
 
   return (
-    <main className="container bg-white flex min-h-screen flex-col items-center p-6 overflow-hidden">
+    <main className="container bg-white flex min-h-screen w-full flex-col items-center p-6 overflow-hidden">
       <header id="header" className="container fixed top-0 bg-inherit p-3">
         <Header />
       </header>
 
       <div
         id="content"
-        className="container mx-auto mt-[4rem] mb-[4rem] flex flex-col justify-center items-center gap-3"
+        className="container mx-auto mt-[4rem] mb-[4rem] w-full flex flex-col justify-center items-center gap-3"
       >
         <Carousel ref={carouselRef} childWidth={imgWidth}>
-          <img src="https://i.pinimg.com/736x/89/c6/05/89c605589cc891c32f2682839adec2a3.jpg" width={imgWidth} height={imgHeight} className='object-fill' draggable={false}/>
-          <img src="https://t4.ftcdn.net/jpg/05/62/99/31/360_F_562993122_e7pGkeY8yMfXJcRmclsoIjtOoVDDgIlh.jpg" width={imgWidth} className='object-fill' height={imgHeight} draggable={false}/>
-          <ImagePicker />
+          <img src="https://i.pinimg.com/736x/89/c6/05/89c605589cc891c32f2682839adec2a3.jpg" className='object-fill h-full' width={imgWidth} draggable={false}/>
+          <img src="https://t4.ftcdn.net/jpg/05/62/99/31/360_F_562993122_e7pGkeY8yMfXJcRmclsoIjtOoVDDgIlh.jpg" className='object-fill h-full' width={imgWidth} draggable={false}/>
+          <ImagePicker  />
         </Carousel>
         <TextBox icon="MdAccessTime" disabled value={data.time} handleChange={(value) => handleData(value, "time")} />
         <div className="w-full">
