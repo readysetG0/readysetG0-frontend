@@ -6,7 +6,7 @@ import Header from '@/components/Common/Header'
 import Footer from '@/components/Common/Footer'
 import Carousel from '@/components/Common/Carousel'
 import Divider from '@/components/Common/Divider'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import ImagePicker from '@/components/Common/ImagePicker'
 import TagBox from '@/components/Common/TagBox'
 import TextBox from '@/components/Common/TextBox'
@@ -34,6 +34,19 @@ export default function RecordPage({
     test3: "",
   })
 
+  const carouselRef = useRef<HTMLDivElement>(null)
+  const [imgWidth, setImgWidth] = useState(0)
+  const [imgHeight, setImgHeight] = useState(0)
+
+  useEffect(() => {
+    if (carouselRef.current !== null) {
+      setImgWidth(carouselRef.current?.getBoundingClientRect().width)
+      setImgHeight(carouselRef.current?.getBoundingClientRect().height)
+    }
+    console.log("IMG_WIDTH? ", imgWidth)
+    console.log("IMG_HEIGHT? ", imgHeight)
+  }, [])
+
   // console.log(id)
   function handleData(value: string, name: string) {
     setData({
@@ -56,9 +69,9 @@ export default function RecordPage({
         id="content"
         className="container mx-auto mt-[4rem] mb-[4rem] flex flex-col justify-center items-center gap-3"
       >
-        <Carousel>
-          <img src="https://i.pinimg.com/736x/89/c6/05/89c605589cc891c32f2682839adec2a3.jpg"/>
-          <img src="https://t4.ftcdn.net/jpg/05/62/99/31/360_F_562993122_e7pGkeY8yMfXJcRmclsoIjtOoVDDgIlh.jpg"/>
+        <Carousel ref={carouselRef} childWidth={imgWidth}>
+          <img src="https://i.pinimg.com/736x/89/c6/05/89c605589cc891c32f2682839adec2a3.jpg" width={imgWidth} height={imgHeight} className='object-fill' draggable={false}/>
+          <img src="https://t4.ftcdn.net/jpg/05/62/99/31/360_F_562993122_e7pGkeY8yMfXJcRmclsoIjtOoVDDgIlh.jpg" width={imgWidth} className='object-fill' height={imgHeight} draggable={false}/>
           <ImagePicker />
         </Carousel>
         <TextBox icon="MdAccessTime" disabled value={data.time} handleChange={(value) => handleData(value, "time")} />
