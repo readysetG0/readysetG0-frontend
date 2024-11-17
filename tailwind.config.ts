@@ -29,6 +29,9 @@ const config: Config = {
         rsgOrange:{
           primary:"#F38138",
           accent:"#FFB07B"
+        },
+        rsgFont: {
+          primary: "#2F2D3D"
         }
       }
     },
