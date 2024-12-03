@@ -6,7 +6,7 @@ import Header from '@/components/Common/Header'
 import Footer from '@/components/Common/Footer'
 import Carousel from '@/components/Common/Carousel'
 import Divider from '@/components/Common/Divider'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import ImagePicker from '@/components/Common/ImagePicker'
 import TagBox from '@/components/Common/TagBox'
 import TextBox from '@/components/Common/TextBox'
@@ -34,6 +34,17 @@ export default function RecordPage({
     test3: "",
   })
 
+  const carouselRef = useRef<HTMLDivElement>(null)
+  const [imgWidth, setImgWidth] = useState(0)
+  const [imgHeight, setImgHeight] = useState(0)
+
+  useEffect(() => {
+    if (carouselRef.current !== null) {
+      setImgWidth(carouselRef.current?.getBoundingClientRect().width)
+      setImgHeight(carouselRef.current?.getBoundingClientRect().height)
+    }
+  }, [])
+
   // console.log(id)
   function handleData(value: string, name: string) {
     setData({
@@ -47,19 +58,19 @@ export default function RecordPage({
   }
 
   return (
-    <main className="container bg-white flex min-h-screen flex-col items-center p-6 overflow-hidden">
+    <main className="container bg-white flex min-h-screen w-full flex-col items-center p-6 overflow-hidden">
       <header id="header" className="container fixed top-0 bg-inherit p-3">
         <Header />
       </header>
 
       <div
         id="content"
-        className="container mx-auto mt-[4rem] mb-[4rem] flex flex-col justify-center items-center gap-3"
+        className="container mx-auto mt-[4rem] mb-[4rem] w-full flex flex-col justify-center items-center gap-3"
       >
-        <Carousel>
-          <img src="https://i.pinimg.com/736x/89/c6/05/89c605589cc891c32f2682839adec2a3.jpg"/>
-          <img src="https://t4.ftcdn.net/jpg/05/62/99/31/360_F_562993122_e7pGkeY8yMfXJcRmclsoIjtOoVDDgIlh.jpg"/>
-          <ImagePicker />
+        <Carousel ref={carouselRef} childWidth={imgWidth}>
+          <img src="https://i.pinimg.com/736x/89/c6/05/89c605589cc891c32f2682839adec2a3.jpg" className='object-fill h-full' width={imgWidth} draggable={false}/>
+          <img src="https://t4.ftcdn.net/jpg/05/62/99/31/360_F_562993122_e7pGkeY8yMfXJcRmclsoIjtOoVDDgIlh.jpg" className='object-fill h-full' width={imgWidth} draggable={false}/>
+          <ImagePicker  />
         </Carousel>
         <TextBox icon="MdAccessTime" disabled value={data.time} handleChange={(value) => handleData(value, "time")} />
         <div className="w-full">
@@ -69,7 +80,6 @@ export default function RecordPage({
         <TagBox tagList={data.tag} selectIndexList={[1]} icon="IoMdPricetag" />
         <TagBox tagList={["홍길동", "김철수", "김영희"]} selectIndexList={[1]} mode="multiple" icon="IoMdPricetag" />
         <RecordBox icon="MdOutlineEdit" value={data.test2} handleChange={(value) => handleData(value, "test2")} />
-        <TextBox icon="GrMoney" value={data.test3} handleChange={(value) => handleData(value, "test3")} />
       </div>
 
       <footer
@@ -78,12 +88,7 @@ export default function RecordPage({
       >
         <Footer>
           <Button title="삭제" btnType="cancel" />
-          <Button
-            title="수정"
-            handleClick={() => {
-              sendData()
-            }}
-          />
+          <Button title="수정" handleClick={() => {sendData()}} />
         </Footer>
       </footer>
     </main>
